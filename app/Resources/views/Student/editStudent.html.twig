@@ -1,0 +1,72 @@
+{% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
+{% block title %}Editer un élève{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+{% endblock %}
+{% block javascripts_head %}{% endblock %}
+{% block page_title %}{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_content %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Editer un élève</h3>
+                        <p> *Champs obligatoires</p>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            {{ form_label(form.firstname,'Prénom') }}
+                            {{ form_errors(form.firstname) }}
+                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.lastname, 'Nom') }}
+                            {{ form_errors(form.lastname) }}
+                            {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.dateNaissance, 'Date de naissance')}}
+                            {{ form_errors(form.dateNaissance) }}
+                            {{ form_widget(form.dateNaissance, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.telephone, 'Téléphone') }}
+                            {{ form_errors(form.telephone) }}
+                            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.email, 'E-mail') }}
+                            {{ form_errors(form.email) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.avatar, 'Avatar') }}
+                            {{ form_errors(form.avatar) }}
+                            {{ form_widget(form.avatar, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="box-footer">
+                            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/common.js') }}"></script>
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/admin-lte.js') }}"></script>
+{% endblock %}
+{% block javascripts_inline %}{% endblock %}

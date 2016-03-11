@@ -1,0 +1,35 @@
+{% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
+{% block title %}Consulter une classe{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+{% endblock %}
+{% block javascripts_head %}{% endblock %}
+{% block page_title %}{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_content %}
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-11">
+    			<div class="box box-primary">
+		    		<div class="box-header with-border">
+		              <h3 class="box-title">Consulter une classe</h3>
+		            </div>
+		            <div class="box-body">
+					    <div class="form-group">
+							Classe : {{classe.degreeTitle}} {{classe.numero}}
+					    </div>
+					    <div class="box-footer">
+							<a class="btn btn-primary" href="{{ path('classe_edit', {'id': classe.id }) }}">Modifier</a>
+							<a class="btn btn-primary" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')">Supprimer</a>
+					    </div>
+				   </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/common.js') }}"></script>
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/admin-lte.js') }}"></script>
+{% endblock %}
+{% block javascripts_inline %}{% endblock %}

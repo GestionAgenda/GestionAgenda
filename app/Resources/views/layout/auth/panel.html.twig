@@ -1,0 +1,16 @@
+<div class="auth-wr">
+    <div class="auth-title text-center">
+        {% block auth_title %}
+            <div class="pen-title">
+                <h1>Agenda</h1><span>Développeurs <i class='fa fa-paint-brush'></i> + <i class='fa fa-code'></i> Corentin RÉGNIER,Pierre-Louis CHEVALLIER, Artimes NOUROLLAHI, Thibaut PENHARD</a></span>
+            </div>
+        {% endblock %}
+    </div>
+            <div{% block panel_auth_class %}{% endblock %}">
+                    <div class="panel-body">
+                        {% block panel_auth_body %}{% endblock %}
+                        </div>
+            </div>
+            {% block auth_alert %}{% endblock %}
+    </div>
+</div> 

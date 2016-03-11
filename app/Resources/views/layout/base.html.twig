@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" {% block html_class %}{% endblock %}>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Agenda{% endblock %}</title>
+        <meta name="description" content="{% block meta_desc %}Agenda{% endblock %}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
+        {% block stylesheets %}
+            <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+            <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+            <link href="{{ asset('css/login/style.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/login/reset.css') }}" rel="stylesheet">
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body {% block body_class %}{% endblock %}>
+        {% block body %}
+            <main>
+                {% block forward %}{% endblock %}
+                {% block container %}
+                    <div {% block container_class %}{% endblock %}">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </main>
+        {% endblock %}
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script type="text/javascript" src="{{ asset('js/login/index.js') }}"></script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'layout/auth/panel.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block panel_auth_title %}veuillez vous identifier{% endblock %}
+
+{% block panel_auth_body %}
+        <div class="module form-module">
+
+            <div class="toggle" ><i class="fa fa-times fa-pencil"></i>
+                <div class="tooltip">Mot de passe oublié ?</div>
+            </div>
+            <div class="form">
+                <h2>Connectez-vous !</h2>
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}">
+                    <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"/>
+                    <label >
+                        <input type="checkbox" class="checkbox"id="remember_me" name="_remember_me" value="{{ 'security.login.remember_me'|trans }}">
+                        Se souvenir de moi
+                    </label>
+                    <button type="submit" class="btn btn-success btn-lg"  id="_submit" name="_submit" >Connexion</button>
+                </form>
+            </div>
+            <div class="form">
+
+                <h2>Demande de renvoi de mot de passe par mail</h2>
+                {% if invalid_username is defined %}
+                    <div class="alert alert-danger" role="alert">{{ 'Adresse e-mail incorrect.'|trans({'%username%': invalid_username}) }}</div>
+                {% endif %}
+                <form action="{{ path("fos_user_resetting_send_email") }}"method="POST" class="fos_user_resetting_request" >
+                    <input type="text" id="username" name="username" placeholder="E-mail" required="required">
+                    <button type="submit" class="btn btn-success"  value="{{ 'Valider'|trans }}">Valider</button>
+                </form>
+
+            </div>
+        </div>
+{% endblock %}

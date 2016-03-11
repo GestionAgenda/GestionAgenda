@@ -1,0 +1,31 @@
+{% extends 'layout/auth/panel.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block panel_auth_body %}
+    <div class="module form-module">
+
+        <div class="toggle" ><i class="fa fa-times fa-pencil"></i>
+        </div>
+        <div class="form">
+
+            <h2>Demande de renvoi de mot de passe par mail</h2>
+            {% if invalid_username is defined %}
+                <div class="alert alert-danger" role="alert">{{ 'Adresse e-mail incorrect.'|trans({'%username%': invalid_username}) }}</div>
+            {% endif %}
+            <form action="{{ path("fos_user_resetting_send_email") }}"method="POST" class="fos_user_resetting_request" >
+                <input type="text" id="username" name="username" placeholder="E-mail" required="required">
+
+                <button type="submit" value="{{ 'Valider'|trans }}">Valider</button>
+
+
+            </form>
+            <br>
+            <form action="{{ path("fos_user_security_login") }}"method="GET" class="fos_user_security_login" >
+                <button type="submit" >Retour</button>
+            </form>
+
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
+{% block title %}Agenda{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+{% endblock %}
+{% block javascripts_head %}{% endblock %}
+{% block page_title %}<h1>Agenda</h1>{% endblock %}
+{% block page_subtitle %}<h3>PPE SYMFONY 3 - BTS 2 GROUPE 2</h3>{% endblock %}
+{% block page_content %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/common.js') }}"></script>
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/admin-lte.js') }}"></script>
+{% endblock %}
+{% block javascripts_inline %}{% endblock %}

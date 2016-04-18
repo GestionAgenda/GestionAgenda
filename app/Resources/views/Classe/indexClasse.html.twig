@@ -15,15 +15,13 @@
 		              	<h3 class="box-title">Liste des classes</h3>
 						<p><a class="btn bg-olive btn-flat margin" href="{{ path('classe_add') }}">Ajouter une classe</a></p>
 		            </div>
-		            <div class="box-body">
+		            <div class="box-body" align="center">
 						<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 							<div class="col-sm-11"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 									<thead>
 										<tr role="row">
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Classe </th>
-											<th>Modifier</th>
-											<th>Supprimer</th>
-											<th>Détails</th>
+											<th>Actions</th>
 
 
 										</tr>
@@ -31,21 +29,17 @@
 									<tbody>
 									{% for classe in classes %}
 										<tr role="row" class="odd">
-											<td >{{ classe.degreeTitle}} {{ classe.numero}}</td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('classe_edit', {'id': classe.id }) }}">Modifier</a></td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')">Supprimer</a></td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('classe_show', {'id': classe.id }) }}">Détails</a></td>
+											<td >{{ classe.degreeTitle}} {{ classe.number}}</td>
+											<td>
+												<div class="btn-group">
+														<a class="btn btn-info" alt="Consulter"href="{{ path('classe_show', {'id': classe.id }) }}"><i class="fa fa-fw fa-search"></i></a>
+														<a class="btn btn-warning" alt="Modifier"  href="{{ path('classe_edit', {'id': classe.id }) }}"><i class="fa fa-fw fa-edit" ></i></a>
+														<a class="btn btn-danger" alt="Supprimer" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')"><i class="fa fa-fw fa-trash"></i></a>
+												</div>
+											</td>
 										</tr>
 									{% endfor %}
 									</tbody>
-									<tfoot>
-										<tr>
-											<th rowspan="1" colspan="1">Classe</th>
-											<th rowspan="1" colspan="1">Modifier</th>
-											<th rowspan="1" colspan="1">Supprimer</th>
-											<th rowspan="1" colspan="1">Détails</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>

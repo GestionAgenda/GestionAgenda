@@ -26,6 +26,11 @@ class Classe
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Student\Student", mappedBy="classe")
+     */
+    private $students;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @var string
@@ -45,14 +50,15 @@ class Classe
      * )
      * @var int
      *
-     * @ORM\Column(name="numero", type="integer", length=55)
+     * @ORM\Column(name="number", type="integer", length=55)
      */
-    protected $numero;
+    protected $number;
 
 
 
     public function __construct()
     {
+        $this->students = new ArrayCollection();
     }
 
     /**
@@ -95,19 +101,43 @@ class Classe
      * @param $numero
      * @return $this
      */
-    public function setNumero($numero)
+    public function setNumber($number)
     {
-        $this->numero = $numero;
+        $this->number = $number;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getNumero()
+    public function getNumber()
     {
-        return $this->numero;
+        return $this->number;
     }
 
-    
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s - %d", $this->degreeTitle, $this->number);
+    }
+
+    /**
+     * @return array
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
+    /**
+     * @param $memberSince
+     * @return $this
+     */
+    public function setStudents($student)
+    {
+        $this->student = $student;
+        return $this;
+    }
 }

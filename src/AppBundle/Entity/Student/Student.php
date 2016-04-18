@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use APY\DataGridBundle\Grid\Mapping as GRID;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\User\User;
 
 /**
@@ -17,6 +17,10 @@ use AppBundle\Entity\User\User;
 class Student 
 {
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Effectuate\Effectuate", mappedBy="student")
+     */
+    private $effectuates;
 
     /**
     *
@@ -25,6 +29,16 @@ class Student
     *
     **/
     private $user;
+
+    /**
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Classe\Classe", inversedBy="students")
+     * @ORM\JoinColumn(name="classe_id", referencedColumnName="id")
+     *
+     **/
+    private $classe;
 
     /**
      *
@@ -58,7 +72,6 @@ class Student
     protected $firstname;
 
 
-    /**
     /**
      * @Assert\DateTime()
      *
@@ -111,6 +124,7 @@ class Student
 
     public function __construct()
     {
+        $this->effectuates = new ArrayCollection();
     }
 
     /**
@@ -225,7 +239,7 @@ class Student
      * @param $dateNaissance
      * @return $this
      */
-    public function setDateNaissance($dateNaissance)
+    public function setDateNaissance(\DateTime $dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
         return $this;
@@ -255,5 +269,41 @@ class Student
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @param $classe
+     * @return $this
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEffectuates()
+    {
+        return $this->effectuates;
+    }
+
+    /**
+     * @param $effectuates
+     * @return $this
+     */
+    public function setEffectuates($effectuates)
+    {
+        $this->effectuates = $effectuates;
+        return $this;
     }
 }

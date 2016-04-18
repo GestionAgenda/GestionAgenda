@@ -63,7 +63,7 @@ class ClasseType extends AbstractType
                                                             ],
                                                             'choices_as_values' => true,
                 ])
-                ->add('numero', TextType::class, array('label' =>'Numéro', 'required' =>true))
+                ->add('number', TextType::class, array('label' =>'Numéro', 'required' =>true))
                 ->add('save', SubmitType::class, array('label' =>'Sauvegarder'));
 
     }

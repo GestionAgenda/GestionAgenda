@@ -121,6 +121,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->students = new ArrayCollection();
     }
 
     /**
@@ -261,21 +262,21 @@ class User extends BaseUser
         $this->setPlainPassword($password);
         return $password;
     }
-     /**
-     * @return Student
+    /**
+     * @return array
      */
-    public function getStudent()
+    public function getStudents()
     {
         return $this->students;
     }
 
     /**
-     * @param $memberSince
+     * @param $students
      * @return $this
      */
-    public function setStudent($student)
+    public function setStudents($students)
     {
-        $this->student = $student;
+        $this->students = $students;
         return $this;
     }
 }

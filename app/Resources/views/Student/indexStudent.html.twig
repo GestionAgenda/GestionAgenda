@@ -22,42 +22,34 @@
 										<tr role="row">
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Nom </th>
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Prénom</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Classe</th>
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Date de naissance</th>
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Téléphone</th>
 											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">E-mail</th>
-											<th>Modifier</th>
-											<th>Supprimer</th>
-											<th>Détails</th>
+											<th class="col-md-2">Actions</th>
 
 
 										</tr>
 									</thead>
 									<tbody>
 									{% for student in students %}
-										<tr role="row" class="odd">
+										<tr >
 											<td >{{ student.lastname}}</td>
 											<td >{{ student.firstname}}</td>
+											<td >{{ student.classe}}</td>
 											<td>{{ student.dateNaissance | date("d/m/Y")}}</td>
 											<td>{{ student.telephone}}</td>
 											<td>{{ student.email}}</td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('student_edit', {'id': student.id }) }}">Modifier</a></td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('student_delete', {'id': student.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cet élève ?')">Supprimer</a></td>
-											<td><a class="btn btn-block btn-info btn-xs" href="{{ path('student_show', {'id': student.id }) }}">Détails</a></td>
+											<td>
+												<div class="btn-group">
+													<a class="btn btn-info" alt="Consulter"href="{{ path('student_show', {'id': student.id }) }}"><i class="fa fa-fw fa-search"></i></a>
+													<a class="btn btn-warning" alt="Modifier" href="{{ path('student_edit', {'id': student.id }) }}"><i class="fa fa-fw fa-edit" ></i></a>
+													<a class="btn btn-danger" alt="Supprimer" href="{{ path('student_delete', {'id': student.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cet élève ?')"><i class="fa fa-fw fa-trash"></i></a>
+												</div>
+											</td>
 										</tr>
 									{% endfor %}
 									</tbody>
-									<tfoot>
-										<tr>
-											<th rowspan="1" colspan="1">Nom</th>
-											<th rowspan="1" colspan="1">Prénom</th>
-											<th rowspan="1" colspan="1">Date de naissance</th>
-											<th rowspan="1" colspan="1">Téléphone</th>
-											<th rowspan="1" colspan="1">E-mail</th>
-											<th rowspan="1" colspan="1">Modifier</th>
-											<th rowspan="1" colspan="1">Supprimer</th>
-											<th rowspan="1" colspan="1">Détails</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>

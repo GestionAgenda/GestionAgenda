@@ -31,6 +31,12 @@
                         </div>
 
                         <div class="form-group">
+                            {{ form_label(form.classe, 'Classe') }}
+                            {{ form_errors(form.classe) }}
+                            {{ form_widget(form.classe, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
                             {{ form_label(form.dateNaissance, 'Date de naissance')}}
                             {{ form_errors(form.dateNaissance) }}
                             {{ form_widget(form.dateNaissance, {'attr': {'class': 'form-control'}}) }}

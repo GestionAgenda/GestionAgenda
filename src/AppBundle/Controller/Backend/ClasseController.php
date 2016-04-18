@@ -88,7 +88,7 @@ class ClasseController extends Controller
                 $em->flush();
                 $this->addFlash(
                     'success',
-                    $this->get('translator')->trans('classe.classe_added', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumero()])
+                    $this->get('translator')->trans('classe.classe_added', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumber()])
                 );
                 return $this->redirectToRoute('classe_index');
             } catch (\Exception $e) {
@@ -128,7 +128,7 @@ class ClasseController extends Controller
                 $em->flush();
                 $this->addFlash(
                     'success',
-                    $this->get('translator')->trans('classe.classe_edited', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumero()])
+                    $this->get('translator')->trans('classe.classe_edited', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumber()])
                 );
 
                 return $this->redirectToRoute('classe_index');
@@ -187,7 +187,7 @@ class ClasseController extends Controller
             $em->flush();
             $this->addFlash(
                 'success',
-                $this->get('translator')->trans('classe.classe_deleted', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumero()])
+                $this->get('translator')->trans('classe.classe_deleted', ['%classe%' => $classe->getDegreeTitle()+$classe->getNumber()])
             );
         } catch (\Exception $e) {
             $this->addFlash('danger', $e->getMessage());

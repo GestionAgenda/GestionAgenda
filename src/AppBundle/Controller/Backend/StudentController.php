@@ -151,10 +151,10 @@ class StudentController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($student);
                 $em->flush();
-                $this->addFlash(
+                /*$this->addFlash(
                     'success',
                     $this->get('translator')->trans('student.student_edited', ['%student%' => $student])
-                );
+                );*/
 
                 return $this->redirectToRoute('student_index');
             } catch (\Exception $e) {

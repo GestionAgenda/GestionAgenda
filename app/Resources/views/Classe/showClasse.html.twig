@@ -16,8 +16,46 @@
 		            </div>
 		            <div class="box-body">
 					    <div class="form-group">
-							Classe : {{classe.degreeTitle}} {{classe.numero}}
+							Classe : {{classe.degreeTitle}} {{classe.number}}
 					    </div>
+						<hr></hr>
+						<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+							<div class="col-sm-11"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+									<thead>
+										<tr role="row">
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Nom </th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Prénom</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Classe</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Date de naissance</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Téléphone</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">E-mail</th>
+											<th class="col-md-2">Actions</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+									{% for student in classe.students %}
+										<tr >
+											<td >{{ student.lastname}}</td>
+											<td >{{ student.firstname}}</td>
+											<td >{{ student.classe}}</td>
+											<td>{{ student.dateNaissance | date("d/m/Y")}}</td>
+											<td>{{ student.telephone}}</td>
+											<td>{{ student.email}}</td>
+											<td>
+												<div class="btn-group">
+													<a class="btn btn-info" alt="Consulter"href="{{ path('student_show', {'id': student.id }) }}"><i class="fa fa-fw fa-search"></i></a>
+													<a class="btn btn-warning" alt="Modifier" href="{{ path('student_edit', {'id': student.id }) }}"><i class="fa fa-fw fa-edit" ></i></a>
+													<a class="btn btn-danger" alt="Supprimer" href="{{ path('student_delete', {'id': student.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cet élève ?')"><i class="fa fa-fw fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
 					    <div class="box-footer">
 							<a class="btn btn-primary" href="{{ path('classe_edit', {'id': classe.id }) }}">Modifier</a>
 							<a class="btn btn-primary" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')">Supprimer</a>

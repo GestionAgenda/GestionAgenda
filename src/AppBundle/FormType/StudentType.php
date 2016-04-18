@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StudentType extends AbstractType
 {
@@ -16,6 +17,9 @@ class StudentType extends AbstractType
     {
         $builder->add('firstname', TextType::class, array('label' =>'Prénom', 'required' =>true))
                 ->add('lastname', TextType::class, array('label' =>'Nom', 'required' =>true))
+                ->add('classe', EntityType::class, array(
+                    'class' => 'AppBundle:Classe\Classe',
+                ))
                 ->add('dateNaissance', BirthdayType::class, array(
                     'input'  => 'datetime',
                     'widget' => 'choice',

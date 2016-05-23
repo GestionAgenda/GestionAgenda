@@ -1,0 +1,25 @@
+event_index:
+    path:     /
+    defaults: { _controller: EventBundle:Event:index }
+    methods:  GET
+
+event_show:
+    path:     /event/{id}/show
+    defaults: { _controller: EventBundle:Event:show }
+    methods:  GET
+
+event_create:
+    path:     /create
+    defaults: { _controller: EventBundle:Event:create }
+    methods:  [GET, POST]
+
+event_edit:
+    path:     /event/{id}/edit
+    defaults: { _controller: EventBundle:Event:edit }
+    methods:  [GET, POST]
+
+event_fullcalendar_loader:
+    path: /fc-load-events
+    defaults: { _controller: EventBundle:Event:loadCalendar }
+    options:
+        expose: true

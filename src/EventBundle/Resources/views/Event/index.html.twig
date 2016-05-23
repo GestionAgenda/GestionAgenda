@@ -1,0 +1,83 @@
+{% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
+
+{% block stylesheets %}
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+{% endblock %}
+{% block javascripts_head %}
+ <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
+{% endblock %}
+{% block page_title %}{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Calendrier</h3>
+                    </div>
+                    <div class="box-body">
+                        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+                        <div class="box-footer">
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/admintemplate/static/dev/scripts/admin-lte-calendar.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/lang/fr.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <!-- FastClick -->
+    <script type="text/javascript">
+        $(function () {
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+
+            $('#calendar-holder').fullCalendar({
+                defaultView: 'agendaWeek',
+                businessHours: true,
+                eventSources: [{
+                    url: Routing.generate('event_fullcalendar_loader'),
+                    type: 'POST',
+
+                    error: function() {
+                       $('.alert-danger').removeClass('hide');
+                    },
+                }],
+                eventLimit: true,
+                header: {
+                    left: 'prev, next, today',
+                    center: 'title',
+                    right: 'month, agendaWeek, agendaDay'
+                },
+                dayClick: function(date, jsEvent, view, resourceObj) {
+                    if (view.name == 'month' || view.name == 'basicWeek') {
+                        $('#calendar-holder').fullCalendar('changeView', 'agendaDay');
+                        $('#calendar-holder').fullCalendar('gotoDate', date);
+                    }
+                },
+                eventRender: function (event, element) {
+                    element.find('.fc-title').html(event.title);
+                },
+                lazyFetching: true,
+                height: 600,
+            });
+        });
+    </script>
+{% endblock %}

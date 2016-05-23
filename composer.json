@@ -43,7 +43,8 @@
         "corentinregnier/admin-template-bundle": "dev-master",
         "apy/datagrid-bundle": "dev-master",
         "symfony/assetic-bundle": "^2.7",
-        "adesigns/calendar-bundle": "^1.1"
+        "adesigns/calendar-bundle": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

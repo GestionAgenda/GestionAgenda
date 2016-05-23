@@ -20,8 +20,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new CorentinRegnier\AdminTemplateBundle\AdminTemplateBundle(),
             new APY\DataGridBundle\APYDataGridBundle(),
-
+            new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            
             new AppBundle\AppBundle(),
+            new EventBundle\EventBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

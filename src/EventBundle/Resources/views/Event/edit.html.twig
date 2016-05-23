@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% set active_parent = 'event' %}
+{% set active = 'event_create' %}
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+{% block content %}
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Create Event</h3>
+        </div>
+        <div class="box-body">
+            <div style="width: 100%; margin-bottom: 10px;" class="btn-group">
+                <ul id="color-chooser" class="fc-color-picker">
+                    <li><a href="#" class="text-aqua"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-blue"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-light-blue"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-teal"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-yellow"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-orange"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-green"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-lime"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-red"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-purple"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-fuchsia"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-muted"><i class="fa fa-square"></i></a></li><li><a href="#" class="text-navy"><i class="fa fa-square"></i></a></li>
+                </ul>
+
+            </div>
+            <!-- /btn-group -->
+            {{ form_start(form) }}
+                {{ form_widget(form.bgColor, {'attr': {'class': 'color-event'}}) }}
+                <div class="input-group">
+                    <input type="text" class="daterangepicker" />
+                </div>
+                <div class="input-group">
+                    {{ form_widget(form.startDatetime) }}
+                    {{ form_widget(form.endDatetime) }}
+                </div>
+                <!-- /input-group -->
+                <div class="input-group">
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre'}}) }}
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-flat btn-color-event" type="submit">
+                            Add
+                        </button>
+                    </div>
+                    <!-- /btn-group -->
+                </div>
+                <!-- /input-group -->
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript">
+
+        $('.daterangepicker').daterangepicker(
+        {
+            locale: {
+              format: 'YYYY-MM-DD'
+            },
+            startDate: '2013-01-01',
+            endDate: '2013-12-31'
+        },
+        function(start, end, label) {
+            alert("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+
+
+        var currColor = "#f39c12"; //Red by default
+        //Color chooser button
+        var colorChooser = $("#color-chooser-btn");
+        $("#color-chooser > li > a").click(function (e) {
+            e.preventDefault();
+            //Save color
+            currColor = $(this).css("color");
+            //Add color effect to button
+            $('.btn-color-event').css({"background-color": currColor, "border-color": currColor});
+            $('.color-event').val(currColor);
+        });
+        $('.btn-color-event').css({"background-color": currColor, "border-color": currColor});
+        $('.color-event').val(currColor);
+    </script>
+{% endblock %}

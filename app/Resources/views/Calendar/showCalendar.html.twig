@@ -1,5 +1,5 @@
 {% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
-{% block title %}Calendrier{% endblock %}
+{% block title %}Consulter les évènements{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
@@ -13,11 +13,13 @@
     		<div class="col-md-11">
     			<div class="box box-primary">
 		    		<div class="box-header with-border">
-		              <h3 class="box-title">Calendrier</h3>
+		              <h3 class="box-title">Consulter les évènement</h3>
 		            </div>
 		            <div class="box-body">
-		            		Bienvenue sur l'application de gestion d'agenda
+					    {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
 					    <div class="box-footer">
+							<a class="btn btn-primary" href="{{ path('classe_edit', {'id': classe.id }) }}">Modifier</a>
+							<a class="btn btn-primary" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')">Supprimer</a>
 					    </div>
 				   </div>
 				</div>

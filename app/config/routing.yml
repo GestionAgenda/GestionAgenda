@@ -24,3 +24,13 @@ avanzu_admin_profile:
     path: /profile
 avanzu_admin_logout:
     path: /logout
+
+ga_event:
+    resource: "@EventBundle/Resources/config/routing/event.yml"
+    prefix:  /event
+
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.xml" 
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

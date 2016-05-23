@@ -31,6 +31,11 @@ class Classe
     private $students;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lesson\Lesson", mappedBy="classe")
+     */
+    private $lessons;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @var string
@@ -59,6 +64,7 @@ class Classe
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     /**
@@ -132,12 +138,30 @@ class Classe
     }
 
     /**
-     * @param $memberSince
+     * @param $students
      * @return $this
      */
-    public function setStudents($student)
+    public function setStudents($students)
     {
-        $this->student = $student;
+        $this->students = $students;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
+    }
+
+    /**
+     * @param $lessons
+     * @return $this
+     */
+    public function setLessons($lessons)
+    {
+        $this->lessons = $lessons;
         return $this;
     }
 }

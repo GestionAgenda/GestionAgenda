@@ -24,7 +24,10 @@ class MyMenuItemListListener {
     protected function getMenu(Request $request) {
 
         // Build your menu here by constructing a MenuItemModel array
-        $student = new MenuItemModel('liststudent', 'Liste des étudiants', 'student_index', array(/* options */), 'fa fa-list');
+        $calendar = new MenuItemModel('liststudent', 'Liste des étudiants', 'student_index', array(/* options */), 'fa fa-list');
+
+        // Build your menu here by constructing a MenuItemModel array
+        $student = new MenuItemModel('calendar', 'Calendrier', 'event_index', array(/* options */), 'fa fa-calendar');
 
         // Build your menu here by constructing a MenuItemModel array
         $classe = new MenuItemModel('listclasse', 'Liste des classes', 'classe_index', array(/* options */), 'iconclasses fa fa-users');

@@ -4,22 +4,22 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9c4bba268bb51bc2fd0ee7105f78936a",
-    "content-hash": "374a3af7c06a377a852b7dd8781cd976",
+    "hash": "568ddc8ea012e2da84b107841dc44b7e",
+    "content-hash": "428f7bdd97de1c07f1e9951f77f7aed4",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
-            "version": "1.1.1",
+            "version": "dev-master",
             "target-dir": "ADesigns/CalendarBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adesigns/calendar-bundle.git",
-                "reference": "24aacadbbc37a685f54ee2ee53f79b2c6b6879bb"
+                "reference": "3e1ffde0e313980c10f978d89523b0c667f5d255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adesigns/calendar-bundle/zipball/24aacadbbc37a685f54ee2ee53f79b2c6b6879bb",
-                "reference": "24aacadbbc37a685f54ee2ee53f79b2c6b6879bb",
+                "url": "https://api.github.com/repos/adesigns/calendar-bundle/zipball/3e1ffde0e313980c10f978d89523b0c667f5d255",
+                "reference": "3e1ffde0e313980c10f978d89523b0c667f5d255",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "fullcalendar",
                 "jquery calendar"
             ],
-            "time": "2016-02-14 23:25:22"
+            "time": "2016-02-15 02:59:16"
         },
         {
             "name": "apy/datagrid-bundle",
@@ -2600,7 +2600,8 @@
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
         "corentinregnier/admin-template-bundle": 20,
-        "apy/datagrid-bundle": 20
+        "apy/datagrid-bundle": 20,
+        "adesigns/calendar-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

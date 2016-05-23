@@ -4,12 +4,14 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\User\User;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 /**
  * Class LoadUserAdmin
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadUserAdmin implements FixtureInterface
+class LoadUserAdmin extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -26,5 +28,10 @@ class LoadUserAdmin implements FixtureInterface
         $userAdmin->setMemberSince(new \Datetime());
         $manager->persist($userAdmin);
         $manager->flush();
+        $this->addReference('user', $userAdmin);
+    }
+    public function getOrder()
+    {
+        return 1;
     }
 }

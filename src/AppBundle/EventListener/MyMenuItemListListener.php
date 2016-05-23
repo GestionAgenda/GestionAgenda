@@ -24,10 +24,10 @@ class MyMenuItemListListener {
     protected function getMenu(Request $request) {
 
         // Build your menu here by constructing a MenuItemModel array
-        $calendar = new MenuItemModel('liststudent', 'Liste des étudiants', 'student_index', array(/* options */), 'fa fa-list');
+        $student = new MenuItemModel('liststudent', 'Liste des étudiants', 'student_index', array(/* options */), 'fa fa-list');
 
         // Build your menu here by constructing a MenuItemModel array
-        $student = new MenuItemModel('calendar', 'Calendrier', 'event_index', array(/* options */), 'fa fa-calendar');
+        $calendar = new MenuItemModel('calendar', 'Calendrier', 'event_index', array(/* options */), 'fa fa-calendar');
 
         // Build your menu here by constructing a MenuItemModel array
         $classe = new MenuItemModel('listclasse', 'Liste des classes', 'classe_index', array(/* options */), 'iconclasses fa fa-users');
@@ -44,7 +44,7 @@ class MyMenuItemListListener {
         // A child with default circle icon
         //$admin->addChild(new MenuItemModel('editprofile', 'Éditer profil', 'fos_user_profile_show', array(), 'fa fa-user-plus'));
 
-        $menu=array($student,$admin,$classe);
+        $menu=array($calendar,$student,$admin,$classe);
 
         return $this->activateByRoute($request->get('_route'), $menu);
     }

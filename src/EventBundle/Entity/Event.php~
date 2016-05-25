@@ -26,6 +26,11 @@ class Event extends BaseEvent
     /**
      * @ORM\Column(type="string", length=255)
      */
+    protected $url;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     protected $bgColor;
 
     /**
@@ -44,6 +49,11 @@ class Event extends BaseEvent
     protected $allDay;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $type;
+
+    /**
      * @ORM\Column(type="array", nullable=true)
      */
     protected $otherFields;
@@ -51,31 +61,27 @@ class Event extends BaseEvent
 
     public function __construct()
     {}
-    
 
-    
-
-    /**
-     * Set otherFields
-     *
-     * @param array $otherFields
-     *
-     * @return Event
-     */
-    public function setOtherFields($otherFields)
+    public function setType($type)
     {
-        $this->otherFields = $otherFields;
-
-        return $this;
+        $this->type = $type;
     }
 
-    /**
-     * Get otherFields
-     *
-     * @return array
-     */
-    public function getOtherFields()
+    public function getType()
     {
-        return $this->otherFields;
+        return $this->type;
     }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    
 }
+

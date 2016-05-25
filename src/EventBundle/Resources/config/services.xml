@@ -4,6 +4,7 @@
     <services>
         <service id="eventbundle.calendar_listener" class="EventBundle\EventListener\CalendarEventListener">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="router" />
             <tag name="kernel.event_listener" event="calendar.load_events" method="loadEvents" />
         </service>
 

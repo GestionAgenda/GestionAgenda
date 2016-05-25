@@ -5,14 +5,15 @@ namespace EventBundle\EventListener;
 use ADesigns\CalendarBundle\Event\CalendarEvent;
 use ADesigns\CalendarBundle\Entity\EventEntity;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 class CalendarEventListener
 {
     private $entityManager;
-
-    public function __construct(EntityManager $entityManager)
+    private $router;
+    public function __construct(EntityManager $entityManager, Router $router)
     {
+        $this->router=$router;
         $this->entityManager = $entityManager;
     }
 
@@ -60,7 +61,26 @@ class CalendarEventListener
             //optional calendar event settings
             $eventEntity->setAllDay($event->getAllDay());
             $eventEntity->setBgColor($event->getBgColor());
-            
+            $eventEntity->setUrl(
+                $this->router->generate('event_show', array(
+                    'id' => $event->getId()
+                    ))
+                );
+            /*
+            if ('exam' == $event->getType()) {
+                $eventEntity->setUrl(
+                    $this->router->generate('exam_show', array(
+                        'id' => $event->getId()
+                    ))
+                );
+            } else {
+                $eventEntity->setUrl(
+                    $this->router->generate('lesson_show', array(
+                        'id' => $event->getId()
+                    ))
+                );
+            }*/
+
             //finally, add the event to the CalendarEvent for displaying on the calendar
             $calendarEvent->addEvent($eventEntity);
         }

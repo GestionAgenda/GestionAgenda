@@ -1,5 +1,5 @@
 {% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
-
+{% block title %}Calendrier{% endblock %}
 {% block stylesheets %}
     <!-- fullCalendar 2.2.5-->
     <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
@@ -16,7 +16,9 @@
             <div class="col-md-11">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Calendrier</h3>
+                        <h3 class="box-title">Calendrier</h3>
+                        </br>
+                        <p><a class="btn bg-olive btn-flat margin" href="{{ path('event_create') }}">Ajouter un évènement</a></p>
                     </div>
                     <div class="box-body">
                         {% include 'ADesignsCalendarBundle::calendar.html.twig' %}

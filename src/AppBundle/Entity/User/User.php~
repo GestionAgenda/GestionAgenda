@@ -279,28 +279,4 @@ class User extends BaseUser
         $this->students = $students;
         return $this;
     }
-
-    /**
-     * Add student
-     *
-     * @param \AppBundle\Entity\Student\Student $student
-     *
-     * @return User
-     */
-    public function addStudent(\AppBundle\Entity\Student\Student $student)
-    {
-        $this->students[] = $student;
-
-        return $this;
-    }
-
-    /**
-     * Remove student
-     *
-     * @param \AppBundle\Entity\Student\Student $student
-     */
-    public function removeStudent(\AppBundle\Entity\Student\Student $student)
-    {
-        $this->students->removeElement($student);
-    }
 }

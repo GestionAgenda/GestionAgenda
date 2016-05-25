@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Quarter;
+namespace AppBundle\Entity\Skill;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,9 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
   * @ORM\Entity
-  * @ORM\Table(name="agenda__quarter")
+  * @ORM\Table(name="agenda__skill")
   */
-class Quarter
+class Skill
 {
     /**
      *

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Quarter;
+namespace AppBundle\Entity\Degree;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,14 +10,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
   * @ORM\Entity
-  * @ORM\Table(name="agenda__quarter")
+  * @ORM\Table(name="agenda__degree")
   */
-class Quarter
+class Degree
 {
     /**
      *
      * @var int
-     *
+     *  
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -34,7 +34,7 @@ class Quarter
     protected $label;
 
     public function __construct()
-    {
+    { 
     }
 
     /**

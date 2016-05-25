@@ -13,12 +13,10 @@ class EventType extends AbstractType
     {
         $builder
             ->add('title', Type\TextType::class)
-            ->add('url', Type\TextType::class)
             ->add('bgColor', Type\HiddenType::class)
-            ->add('startDatetime', Type\DateType::class)
-            ->add('endDatetime', Type\DateType::class)
-            ->add('type', Type\TextType::class)
-            ->add('allDay', Type\CheckboxType::class)
+            ->add('startDatetime', Type\DateTimeType::class,array('data' => new \DateTime("now")))
+            ->add('endDatetime', Type\DateTimeType::class,array('data' => new \DateTime("now")))
+            ->add('allDay', Type\CheckboxType::class, array('label' =>'Toute la journée'));
         ;
     }
 

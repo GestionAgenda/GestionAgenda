@@ -4,7 +4,7 @@ event_index:
     methods:  GET
 
 event_show:
-    path:     /event/{id}/show
+    path:     /{id}/show
     defaults: { _controller: EventBundle:Event:show }
     methods:  GET
 
@@ -14,7 +14,7 @@ event_create:
     methods:  [GET, POST]
 
 event_edit:
-    path:     /event/{id}/edit
+    path:     /{id}/edit
     defaults: { _controller: EventBundle:Event:edit }
     methods:  [GET, POST]
 

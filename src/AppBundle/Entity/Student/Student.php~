@@ -306,28 +306,4 @@ class Student
         $this->effectuates = $effectuates;
         return $this;
     }
-
-    /**
-     * Add effectuate
-     *
-     * @param \AppBundle\Entity\Effectuate\Effectuate $effectuate
-     *
-     * @return Student
-     */
-    public function addEffectuate(\AppBundle\Entity\Effectuate\Effectuate $effectuate)
-    {
-        $this->effectuates[] = $effectuate;
-
-        return $this;
-    }
-
-    /**
-     * Remove effectuate
-     *
-     * @param \AppBundle\Entity\Effectuate\Effectuate $effectuate
-     */
-    public function removeEffectuate(\AppBundle\Entity\Effectuate\Effectuate $effectuate)
-    {
-        $this->effectuates->removeElement($effectuate);
-    }
 }

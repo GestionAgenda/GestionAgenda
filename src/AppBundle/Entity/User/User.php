@@ -18,6 +18,7 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Student\Student", mappedBy="user")
      */
     private $students;
+    
     /**
      *
      * @var int

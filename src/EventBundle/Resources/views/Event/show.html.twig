@@ -14,21 +14,63 @@
     <div class="container">
         <div class="row">
             <div class="col-md-11">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">{{ event.title }}</h3>
-                    </div>
-                    <div class="box-body">
-                        <th>Appreciation</th>
-                                <td>{{ event.title }}</td>
-                        <div class="box-footer">
-                            <p>
-                                <a class="btn btn-primary btn-warning" href="{{ path('event_edit', {'id': event.id }) }}">Modifier un évènement</a>
-                                <a class="btn btn-primary btn-danger" href="{{ path('event_edit', {'id': event.id }) }} ">Supprimer un évènement</a>
-                            </p>
+                {% if event.type == "control" %}
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Contrôle : {{ event.title }}</h3>
                         </div>
-                   </div>
-                </div>
+                        <div class="box-body">
+                            <p>
+                                <th><h4>Titre :</h4></th>
+                                <td>{{ event.title }}</td>
+                            </p>
+                            <p>
+                                <th><h4>Date de début :</h4></th>
+                                <td>{{ event.startDatetime | date("d/m/Y H:i", "Europe/Paris")}}</td>
+                            </p>
+                            <p>
+                                <th><h4>Date de fin :</h4></th>
+                                <td>{{ event.endDatetime | date("d/m/Y H:i", "Europe/Paris")}}</td>
+                            </p>
+                            <p>
+                                <th><h4>Coefficient:</h4></th>
+                                <td>{{ event.coefficient }}</td>
+                            </p>
+                            <div class="box-footer">
+                                <p>
+                                    <a class="btn btn-primary btn-warning" href="{{ path('control_edit', {'id': event.id }) }}">Modifier un contrôle</a>
+                                    <a class="btn btn-primary btn-danger" href="{{ path('event_delete', {'id': event.id }) }} ">Supprimer un contrôle</a>
+                                </p>
+                            </div>
+                       </div>
+                    </div>
+                {% elseif event.type == "lesson"%}
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Cours : {{ event.title }}</h3>
+                        </div>
+                        <div class="box-body">
+                            <p>
+                                <th><h4>Titre :</h4></th>
+                                <td>{{ event.title }}</td>
+                            </p>
+                            <p>
+                                <th><h4>Date de début :</h4></th>
+                                <td>{{ event.startDatetime | date("d/m/Y H:i", "Europe/Paris")}}</td>
+                            </p>
+                            <p>
+                                <th><h4>Date de fin :</h4></th>
+                                <td>{{ event.endDatetime | date("d/m/Y H:i", "Europe/Paris")}}</td>
+                            </p>
+                            <div class="box-footer">
+                                <p>
+                                    <a class="btn btn-primary btn-warning" href="{{ path('lesson_edit', {'id': event.id }) }}">Modifier un cours</a>
+                                    <a class="btn btn-primary btn-danger" href="{{ path('event_delete', {'id': event.id }) }} ">Supprimer un cours</a>
+                                </p>
+                            </div>
+                       </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

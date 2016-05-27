@@ -7,9 +7,11 @@ use ADesigns\CalendarBundle\Entity\EventEntity as BaseEvent;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="agenda__event")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"lesson" = "Lesson", "control" = "Control"})
  */
-class Event extends BaseEvent
+abstract class Event extends BaseEvent
 {
     /**
      * @ORM\Column(name="id", type="integer")
@@ -17,6 +19,15 @@ class Event extends BaseEvent
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+    *
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Classe\Classe", inversedBy="events")
+    * @ORM\JoinColumn(name="classe_id", referencedColumnName="id")
+    *
+    **/
+    private $classe;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,5 +88,23 @@ class Event extends BaseEvent
     public function getOtherFields()
     {
         return $this->otherFields;
+    }
+
+        /**
+     * @param $classe
+     * @return $this
+     */
+   public function setClasse($classe)
+    {
+        $this->classe = $classe;
+        return $this;
+    }
+
+    /**
+     * @return Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
     }
 }

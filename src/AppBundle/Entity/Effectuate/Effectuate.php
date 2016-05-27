@@ -28,7 +28,7 @@ class Effectuate
 
     /**
     *
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Control\Control", inversedBy="effectuates")
+    * @ORM\ManyToOne(targetEntity="EventBundle\Entity\Control", inversedBy="effectuates")
     * @ORM\JoinColumn(name="control_id", referencedColumnName="id")
     *
     **/

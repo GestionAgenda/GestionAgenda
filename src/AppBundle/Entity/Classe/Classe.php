@@ -4,7 +4,7 @@ namespace AppBundle\Entity\Classe;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 
@@ -31,9 +31,9 @@ class Classe
     private $students;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lesson\Lesson", mappedBy="classe")
+     * @ORM\OneToMany(targetEntity="EventBundle\Entity\Event", mappedBy="classe")
      */
-    private $lessons;
+    private $events;
 
     /**
      * @Assert\NotBlank()
@@ -65,6 +65,7 @@ class Classe
     {
         $this->students = new ArrayCollection();
         $this->lessons = new ArrayCollection();
+        $this->controls = new ArrayCollection();
     }
 
     /**
@@ -150,18 +151,18 @@ class Classe
     /**
      * @return array
      */
-    public function getLessons()
+    public function getEvents()
     {
-        return $this->lessons;
+        return $this->events;
     }
 
     /**
-     * @param $lessons
+     * @param $events
      * @return $this
      */
-    public function setLessons($lessons)
+    public function setEvents($events)
     {
-        $this->lessons = $lessons;
+        $this->events = $events;
         return $this;
     }
 
@@ -189,27 +190,28 @@ class Classe
         $this->students->removeElement($student);
     }
 
+
     /**
-     * Add lesson
+     * Add Event
      *
-     * @param \AppBundle\Entity\Lesson\Lesson $lesson
+     * @param \EventBundle\Entity\Event $event
      *
      * @return Classe
      */
-    public function addLesson(\AppBundle\Entity\Lesson\Lesson $lesson)
+    public function addEvent(\EventBundle\Entity\Event $event)
     {
-        $this->lessons[] = $lesson;
+        $this->events[] = $event;
 
         return $this;
     }
 
     /**
-     * Remove lesson
+     * Remove Event
      *
-     * @param \AppBundle\Entity\Lesson\Lesson $lesson
+     * @param \EventBundle\Entity\Event $event
      */
-    public function removeLesson(\AppBundle\Entity\Lesson\Lesson $lesson)
+    public function removeEvent(\EventBundle\Entity\Event $event)
     {
-        $this->lessons->removeElement($lesson);
+        $this->events->removeElement($event);
     }
 }

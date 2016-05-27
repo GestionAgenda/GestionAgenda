@@ -18,8 +18,33 @@ event_edit:
     defaults: { _controller: EventBundle:Event:edit }
     methods:  [GET, POST]
 
+event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: EventBundle:Event:delete }
+    methods:  [GET, POST]
+
 event_fullcalendar_loader:
     path: /fc-load-events
     defaults: { _controller: EventBundle:Event:loadCalendar }
     options:
         expose: true
+
+control_create:
+    path:     /createControl
+    defaults: { _controller: EventBundle:Control:create }
+    methods:  [GET, POST]
+
+control_edit:
+    path:     /{id}/editControl
+    defaults: { _controller: EventBundle:Control:edit }
+    methods:  [GET, POST]
+
+lesson_create:
+    path:     /createLesson
+    defaults: { _controller: EventBundle:Lesson:create }
+    methods:  [GET, POST]
+
+lesson_edit:
+    path:     /{id}/editLesson
+    defaults: { _controller: EventBundle:Lesson:edit }
+    methods:  [GET, POST]

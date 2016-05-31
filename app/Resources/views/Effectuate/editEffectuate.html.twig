@@ -1,0 +1,52 @@
+{% extends 'AdminTemplateBundle:layout:base-layout.html.twig' %}
+{% block title %}Saisir les notes{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+{% endblock %}
+{% block javascripts_head %}{% endblock %}
+{% block page_title %}{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_content %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Saisir les notes</h3>
+                        <p> *Champs obligatoires</p>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            {{ form_label(form.student, 'Élève') }}
+                            {{ form_errors(form.student) }}
+                            {{ form_widget(form.student, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.note,'Note') }}
+                            {{ form_errors(form.note) }}
+                            {{ form_widget(form.note, {'attr': {'placeholder':'/20','class': 'form-control'}}) }}
+                        </div>
+
+
+                        
+
+                        <div class="box-footer">
+                            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/common.js') }}"></script>
+    <script src="{{ asset('bundles/admintemplate/static/'~ app.environment ~'/scripts/admin-lte.js') }}"></script>
+{% endblock %}
+{% block javascripts_inline %}{% endblock %}

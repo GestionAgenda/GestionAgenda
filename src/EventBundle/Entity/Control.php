@@ -109,4 +109,11 @@ class Control extends BaseControl
         return "control";
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf($this->title);
+    }
 }

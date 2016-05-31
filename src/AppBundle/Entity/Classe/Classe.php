@@ -59,8 +59,6 @@ class Classe
      */
     protected $number;
 
-
-
     public function __construct()
     {
         $this->students = new ArrayCollection();

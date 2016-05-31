@@ -38,6 +38,10 @@ control_edit:
     path:     /{id}/editControl
     defaults: { _controller: EventBundle:Control:edit }
     methods:  [GET, POST]
+control_delete:
+    path:     /{id}/deleteControl
+    defaults: { _controller: EventBundle:Control:delete }
+    methods:  [GET, POST]
 
 lesson_create:
     path:     /createLesson
@@ -47,4 +51,9 @@ lesson_create:
 lesson_edit:
     path:     /{id}/editLesson
     defaults: { _controller: EventBundle:Lesson:edit }
+    methods:  [GET, POST]
+
+lesson_delete:
+    path:     /{id}/deleteLesson
+    defaults: { _controller: EventBundle:Lesson:delete }
     methods:  [GET, POST]

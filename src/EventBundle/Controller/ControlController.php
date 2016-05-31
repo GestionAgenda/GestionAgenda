@@ -60,4 +60,34 @@ class ControlController extends BaseController
             'form' => $form->createView(),
         ));
     }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $control = $em->getRepository('EventBundle:Control')->findOneById($id);
+
+        $form = $this->createDeleteForm($control);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($control);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('event_index');
+    }
+
+    private function createDeleteForm($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $control = $em->getRepository('EventBundle:Control')->findOneById($id);
+
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('control_delete', array('id' => $control->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
+
 }

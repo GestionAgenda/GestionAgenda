@@ -18,6 +18,7 @@ use AppBundle\Entity\User\User;
 class Effectuate 
 {
 
+
     /**
     *
     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student\Student", inversedBy="effectuates")
@@ -39,18 +40,15 @@ class Effectuate
      * @Assert\NotNull()
      * @var float
      *
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 20,
+     *      minMessage = "You must be at least {{ limit }}cm tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }}cm to enter"
+     * )
      * @ORM\Column(name="note", type="float")
      */
     protected $note;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     * @var string
-     *
-     * @ORM\Column(name="comment", type="string", length=255)
-     */
-    protected $comment;
 
 
     /**
@@ -65,6 +63,24 @@ class Effectuate
     
     public function __construct()
     {
+    }
+
+    /**
+     * @param $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -83,24 +99,6 @@ class Effectuate
     public function getNote()
     {
         return $this->note;
-    }
-
-    /**
-     * @param $comment
-     * @return $this
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getComment()
-    {
-        return $this->comment;
     }
 
      /**
@@ -137,18 +135,5 @@ class Effectuate
     public function getStudent()
     {
         return $this->student;
-    }
-
-
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

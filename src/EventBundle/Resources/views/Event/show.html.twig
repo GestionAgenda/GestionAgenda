@@ -38,8 +38,9 @@
                             </p>
                             <div class="box-footer">
                                 <p>
+                                    <a class="btn btn-primary" href="{{ path('effectuate_add', {'id': event.id }) }}">Ajouter les notes</a>
                                     <a class="btn btn-primary btn-warning" href="{{ path('control_edit', {'id': event.id }) }}">Modifier un contrôle</a>
-                                    <a class="btn btn-primary btn-danger" href="{{ path('event_delete', {'id': event.id }) }} ">Supprimer un contrôle</a>
+                                    <a class="btn btn-primary btn-danger" href="{{ path('control_delete', {'id': event.id }) }} ">Supprimer un contrôle</a>
                                 </p>
                             </div>
                        </div>
@@ -65,7 +66,7 @@
                             <div class="box-footer">
                                 <p>
                                     <a class="btn btn-primary btn-warning" href="{{ path('lesson_edit', {'id': event.id }) }}">Modifier un cours</a>
-                                    <a class="btn btn-primary btn-danger" href="{{ path('event_delete', {'id': event.id }) }} ">Supprimer un cours</a>
+                                    <a class="btn btn-primary btn-danger" href="{{ path('lesson_delete', {'id': event.id }) }} ">Supprimer un cours</a>
                                 </p>
                             </div>
                        </div>

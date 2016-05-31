@@ -330,4 +330,12 @@ class Student
     {
         $this->effectuates->removeElement($effectuate);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s - %s", $this->lastname, $this->firstname);
+    }
 }

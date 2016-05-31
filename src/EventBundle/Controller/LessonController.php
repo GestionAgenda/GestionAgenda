@@ -60,4 +60,32 @@ class LessonController extends BaseController
             'form' => $form->createView(),
         ));
     }
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lesson = $em->getRepository('EventBundle:Lesson')->findOneById($id);
+
+        $form = $this->createDeleteForm($lesson);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($lesson);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('event_index');
+    }
+
+    private function createDeleteForm($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lesson = $em->getRepository('EventBundle:Lesson')->findOneById($id);
+
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('lesson_delete', array('id' => $lesson->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }

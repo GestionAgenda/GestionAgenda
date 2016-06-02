@@ -153,6 +153,7 @@ class ClasseController extends Controller
     public function showAction($id)
     {
         $classe = $this->getDoctrine()->getRepository('AppBundle:Classe\Classe')->find($id);
+        $councils= $this->getDoctrine()->getRepository('AppBundle:Council\Council')->findByClasse($classe->getId());
         if (empty($classe)) {
             $this->addFlash('danger', $this->get('translator')->trans('classe.not_found'));
 
@@ -161,6 +162,7 @@ class ClasseController extends Controller
 
         return $this->render(':Classe:showClasse.html.twig', array(
             'classe' => $classe,
+            'councils' => $councils,
         ));
     }
 

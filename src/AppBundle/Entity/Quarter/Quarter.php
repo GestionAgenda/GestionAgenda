@@ -4,7 +4,7 @@ namespace AppBundle\Entity\Quarter;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 
@@ -33,8 +33,22 @@ class Quarter
      */
     protected $label;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Council\Council", mappedBy="quarter")
+     */
+    private $councils;
+
     public function __construct()
     {
+        $this->councils = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s", $this->label);
     }
 
     /**
@@ -71,5 +85,47 @@ class Quarter
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCouncils()
+    {
+        return $this->councils;
+    }
+
+    /**
+     * @param $councils
+     * @return $this
+     */
+    public function setEffectuates($councils)
+    {
+        $this->councils = $councils;
+        return $this;
+    }
+
+    /**
+     * Add council
+     *
+     * @param \AppBundle\Entity\Council\Council $council
+     *
+     * @return Council
+     */
+    public function addEffectuate(\AppBundle\Entity\Effectuate\Effectuate $council)
+    {
+        $this->councils[] = $council;
+
+        return $this;
+    }
+
+    /**
+     * Remove council
+     *
+     * @param \AppBundle\Entity\Council\Council $council
+     */
+    public function removeEffectuate(\AppBundle\Entity\Effectuate\Effectuate $council)
+    {
+        $this->effectuates->removeElement($council);
     }
 }

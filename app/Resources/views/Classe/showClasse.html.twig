@@ -60,6 +60,36 @@
 							<a class="btn btn-primary" href="{{ path('classe_edit', {'id': classe.id }) }}">Modifier</a>
 							<a class="btn btn-primary" href="{{ path('classe_delete', {'id': classe.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cette classe ?')">Supprimer</a>
 					    </div>
+					    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+							<div class="col-sm-11"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+									<thead>
+										<tr role="row">
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Trimestre </th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Classe</th>
+											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Commentaires</th>
+											<th class="col-md-2">Actions</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+									{% for council in councils %}
+										<tr >
+											<td >{{ council.quarter.label}}</td>
+											<td >{{ council.classe.degreeTitle}} - {{ council.classe.number}}</td>
+											<td >{{ council.comment}}</td>
+											<td>
+												<div class="btn-group">
+													<a class="btn btn-warning" alt="Modifier" href="{{ path('council_edit', {'id': council.id }) }}"><i class="fa fa-fw fa-edit" ></i></a>
+													<a class="btn btn-danger" alt="Supprimer" href="{{ path('council_delete', {'id': council.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer ce conseil de classe ?')"><i class="fa fa-fw fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
 				   </div>
 				</div>
 			</div>

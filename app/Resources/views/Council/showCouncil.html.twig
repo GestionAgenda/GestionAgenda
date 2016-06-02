@@ -33,36 +33,6 @@
 						<div class="form-group">
 							E-mail : {{  student.email }}
 						</div>
-						<div class="form-group">
-							Moyenne : {{moyenne}}
-
-						</div>
-						<hr>
-						<h3><p> Listes des notes </p></h3>
-						<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-							<div class="col-sm-11"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-									<thead>
-										<tr role="row">
-											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Titre </th>
-											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Note </th>
-											<th class="sorting" aria-controls="example2" rowspan="1" colspan="1">Coefficient </th>
-
-
-										</tr>
-									</thead>
-									<tbody>
-									{% for note in notes %}
-										<tr role="row" class="odd">
-											<td >{{ note.control[0].title}} </td>
-											<td >{{ note.note}} </td>
-											<td >{{ note.control[0].coefficient}}</td>
-										</tr>
-									{% endfor %}
-									</tbody>
-								</table>
-							</div>
-						</div>
-
 					    <div class="box-footer">
 							<a class="btn btn-primary" href="{{ path('student_edit', {'id': student.id }) }}">Modifier</a>
 							<a class="btn btn-primary" href="{{ path('student_delete', {'id': student.id }) }}" onclick="return confirm('Êtes-vous sur de supprimer cet élève ?')">Supprimer</a>

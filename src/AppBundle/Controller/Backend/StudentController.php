@@ -177,6 +177,27 @@ class StudentController extends Controller
     public function showAction($id)
     {
         $student = $this->getDoctrine()->getRepository('AppBundle:Student\Student')->find($id);
+        $notes = $this->getDoctrine()->getRepository('AppBundle:Effectuate\Effectuate')->findByStudent($student->getId());
+        foreach($notes as $note)
+        {
+            $event = $this->getDoctrine()->getRepository('EventBundle:Control')->findById($note->getControl()->getId());
+            $note->setControl($event);
+
+        }
+        $moyenne=0;
+        $coeff=0;
+        foreach($notes as $note)
+        {
+            $control=$note->getControl();
+            $coefficient=$control[0]->getCoefficient();
+
+
+            $moyenne=$moyenne+$note->getNote()*$coefficient;
+            $coeff=$coeff+$coefficient;
+            
+        }
+        $moyenne=$moyenne/$coeff;
+        
         if (empty($student)) {
             $this->addFlash('danger', $this->get('translator')->trans('student.not_found'));
 
@@ -185,6 +206,8 @@ class StudentController extends Controller
 
         return $this->render(':Student:showStudent.html.twig', array(
             'student' => $student,
+            'notes' => $notes,
+            'moyenne'=>$moyenne,
         ));
     }
     /**

@@ -190,13 +190,14 @@ class StudentController extends Controller
         {
             $control=$note->getControl();
             $coefficient=$control[0]->getCoefficient();
-
-
             $moyenne=$moyenne+$note->getNote()*$coefficient;
             $coeff=$coeff+$coefficient;
             
         }
-        $moyenne=$moyenne/$coeff;
+        if($coeff!=0)
+        {
+            $moyenne=$moyenne/$coeff;
+        }
         
         if (empty($student)) {
             $this->addFlash('danger', $this->get('translator')->trans('student.not_found'));
